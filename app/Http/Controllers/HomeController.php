@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Member;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,13 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $id = Auth::user()->id;
+        $member = Member::where('users_id', $id)->first();
+
+        if (empty($member)) {
+            return redirect()->route('members.create');
+        }
+
         return view('home');
     }
 }

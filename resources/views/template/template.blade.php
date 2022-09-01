@@ -6,6 +6,7 @@
     @include('template.partials.navbar')
     <div id="layoutSidenav">
         @include('template.partials.sideNavbar')
+        @include('sweetalert::alert')
         <div id="layoutSidenav_content">
             <main>
                 @yield('content')
@@ -25,6 +26,7 @@
         </div>
     </div>
     @include('template.partials.footer')
+    @stack('scripts')
 </body>
 
 </html>
